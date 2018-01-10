@@ -1,0 +1,53 @@
+** run vs start 
+  docker container run ALWAYS starts a *new* container
+  docker container start start an existing stopped container
+
+** docker container run --publish 80:80 --detach --name <your name> nginx  default workflow
+  Looks for that image locally in image cache
+    If doesnt find : looks in remote image repository (Docker hub by default)
+    Download the lastest version
+  create a new container based on that image and prepares to start
+  Gives a virtual IP on a private network inside docker engine
+  Opens up port 80 on host and forward to port 80 in container
+  Starts container by using the CMD in the image dockerfile
+
+** What's going on in containers
+  docker container top - process list in on container
+  docker container inspect - detauls of one contianer config
+  docker container stats - perf stats for all containers
+
+docker container run --publish 80:80 nginx 
+  Download (if required) image 'nginx' from docker hub
+  Start a new container from that image
+  Open port 80 on the host IP
+  Route that traffic to the container IP, port 80
+
+
+docker container run --publish 80:80 --detach nginx
+  Same but in daemon mode.
+
+
+docker container ls 
+  List active containers
+
+
+docker container ls -a 
+  List all containers
+
+
+docker container stop 'name or ID'
+  Stop the container
+
+
+docker container run --publish 80:80 --detach --name <your name> nginx
+  // and give a name to the containers
+
+
+docker container logs <your name>
+  Fetch the logs of a container
+
+
+docker container rm (-f, if the container is running)
+  Delete a container
+
+
